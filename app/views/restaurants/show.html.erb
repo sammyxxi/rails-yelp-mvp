@@ -1,0 +1,19 @@
+<h1>Restaurant</h1>
+<div class="card-product-infos">
+  <h2><%= @restaurant.name %></h2>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.category %></p>
+</div>
+<h3>Reviews <%= link_to '+', new_restaurant_review_path(@restaurant) %></h3>
+<ul>
+  <% if @restaurant.reviews.any? %>
+    <% @restaurant.reviews.each do |review| %>
+      <li>
+        <%= review.content %>
+      </li>
+    <% end %>
+  <% else %>
+    <li>No reviews yet</li>
+  <% end %>
+</ul>
+<%= link_to 'All Restaurants', restaurants_path %>
